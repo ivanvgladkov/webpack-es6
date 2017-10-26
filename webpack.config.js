@@ -1,5 +1,4 @@
-module.exports = function(env)
-{
+module.exports = function (env) {
     var path = require('path'),
         folder,
         defaultConfig,
@@ -7,24 +6,30 @@ module.exports = function(env)
         config;
 
     switch (env) {
-        case 'dev': folder = 'dev'; break;
-        case 'prod': folder = 'dist'; break;
-        default: folder = 'dev'; break;
+        case 'dev':
+            folder = 'dev';
+            break;
+        case 'prod':
+            folder = 'dist';
+            break;
+        default:
+            folder = 'dev';
+            break;
     }
 
     defaultConfig = {
         entry: {
-            'modules/a/pageA': './src/modules/a/pageA.js',
-            'modules/b/pageB': './src/modules/b/pageB.js'
+            'modules/controllerA/index': './src/modules/controllerA/index.js',
+            'modules/controllerB/index': './src/modules/controllerB/index.js'
         },
-        module : {
+        module: {
             loaders: [
                 {
-                    test    : /\.js$/,
-                    exclude : /node_modules/,
-                    loader  : 'babel-loader',
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: 'babel-loader',
                     query: {
-                        presets: ['es2015']
+                        presets: ['latest']
                     }
                 },
                 {
@@ -33,7 +38,7 @@ module.exports = function(env)
                 },
                 {
                     test: /\.css$/,
-                    use: [ 'style-loader', 'css-loader' ]
+                    use: ['style-loader', 'css-loader']
                 }
             ]
         },
